@@ -1,0 +1,8 @@
+.vs
+.vagrant
+src/OdeToFood/node_modules
+src/OdeToFood/bin
+src/OdeToFood/obj
+src/OdeToFood/project.lock.json
+src/OdeToFood/*.xproj.user
+
