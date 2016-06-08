@@ -15,10 +15,8 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "OdeToFood": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "http://localhost:4000",
+    "web": {
+      "commandName": "web",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

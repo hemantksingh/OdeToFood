@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
 using Microsoft.Extensions.DependencyInjection;
+using OdeToFood.Controllers;
 
 namespace OdeToFood
 {
@@ -17,6 +18,8 @@ namespace OdeToFood
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
+            app.UseMiddleware<BasicAuthMiddleware>();
+
             app.UseMvc(routeBuilder =>
               routeBuilder.MapRoute("Default", "{controller}/{action}/{id?}"));
 
