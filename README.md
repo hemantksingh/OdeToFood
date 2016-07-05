@@ -1,7 +1,7 @@
 ## Build ##
 There are 2 ways to build the app
 
-* `make run`
+* `make build`
 * `docker-compose build`
 
 ## Start the app ##
