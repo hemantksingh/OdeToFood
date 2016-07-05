@@ -4,5 +4,8 @@ machine:
 
 dependencies:
   override:
-    - make build; make run; sleep 10
-    - curl --retry 10 --retry-delay 5 -v http://localhost:4000
+    - make build
+
+test:
+  override:
+    - make test
