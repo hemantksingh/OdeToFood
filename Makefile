@@ -1,3 +1,7 @@
+ifndef D_HOST
+D_HOST=localhost
+endif
+
 build:
 	docker info
 	docker build -t odetofood:latest --file docker/Dockerfile .
@@ -7,4 +11,4 @@ run:
 
 test: run
 	sleep 5
-	curl --retry 10 --retry-delay 5 -v http://localhost:4000
+	curl --retry 10 --retry-delay 5 -v http://$(D_HOST):4000
