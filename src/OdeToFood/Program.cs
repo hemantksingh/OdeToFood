@@ -12,6 +12,7 @@ namespace OdeToFood
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
+		.UseUrls("http://*:4000")
                 .Build();
 
             host.Run();
