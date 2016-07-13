@@ -4,8 +4,8 @@ machine:
 
 dependencies:
   override:
-    - CLEAN_UP=OFF make build
+    - make build
 
 test:
   override:
-    - make test
+    - CLEAN_UP=OFF make test
