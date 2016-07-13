@@ -2,6 +2,10 @@ ifndef D_HOST
 D_HOST=localhost
 endif
 
+ifndef CLEAN_UP
+CLEAN_UP=ON
+endif
+
 CONTAINER=ode
 IMAGE=odetofood
 PORT=4000
@@ -21,6 +25,12 @@ test: run
 	curl --retry 10 --retry-delay 5 -v http://$(D_HOST):$(PORT)
 	make clean
 
+ifeq ($(CLEAN_UP), ON)
+CLEAN_CMD=@docker rm -f $(CONTAINER)
+else
+CLEAN_CMD=@echo Not cleaning container
+endif
+
 .PHONY: clean
 clean:
-	docker rm -f $(CONTAINER)
+	$(CLEAN_CMD)
