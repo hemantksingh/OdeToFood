@@ -7,28 +7,39 @@ CLEAN_UP=ON
 endif
 
 CONTAINER=ode
-IMAGE=odetofood
+IMAGE=hemantksingh/odetofood
 PORT=4000
 
-.PHONY: build
+.PHONY: build run test push deploy clean
+
+all: build test push clean deploy
+
 build:
 	docker info
 	docker build -t $(IMAGE):latest --file docker/Dockerfile .
 
-.PHONY: run
 run:
 	docker run --name $(CONTAINER) -d -p $(PORT):$(PORT) $(IMAGE):latest
 
-.PHONY: test
 test: run
 	sleep 5
 	curl --retry 10 --retry-delay 5 -v http://$(D_HOST):$(PORT)
-	make clean
+ifeq ($(CLEAN_UP), ON)
+	docker rm -f $(CONTAINER)
+else
+	@echo Not cleaning container
+endif
 
-.PHONY: clean
+push:
+	@docker login -e $(DOCKER_EMAIL) -u $(DOCKER_USER) -p $(DOCKER_PASS)
+	docker push $(IMAGE)
+
+deploy:
+	@echo Deployment using ebcli yet to be done ...
+
 clean:
 ifeq ($(CLEAN_UP), ON)
-	@docker rm -f $(CONTAINER)
+	rm ~/.docker/config.json
 else
 	@echo Not cleaning container
 endif

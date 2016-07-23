@@ -1,11 +1,23 @@
 machine:
+  python:
+    version: 2.7.3
   services:
     - docker
 
 dependencies:
+  pre:
+    - pip install awsebcli
   override:
     - make build
 
 test:
   override:
     - CLEAN_UP=OFF make test
+
+deployment:
+  elasticbeanstalk:
+    branch: master
+    commands:
+      - make push
+      - make deploy
+      - CLEAN_UP=ON make clean
