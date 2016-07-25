@@ -1,0 +1,3 @@
+pages:
+  "/": "Hello World!"
+  "/home/index": "Hello! from the controller."
