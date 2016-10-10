@@ -16,7 +16,7 @@ all: build test push clean deploy
 
 build:
 	docker info
-	docker build -t $(IMAGE):latest --file docker/Dockerfile .
+	docker build -t $(IMAGE):latest .
 
 run:
 	docker run --name $(CONTAINER) -d -p $(PORT):$(PORT) $(IMAGE):latest
