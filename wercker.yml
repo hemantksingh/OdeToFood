@@ -22,4 +22,4 @@ build:
   steps:
     - script:
         name: build
-        code: make build
+        code: docker build -t $(IMAGE):latest .
