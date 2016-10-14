@@ -19,7 +19,7 @@ build:
 	docker build -t $(IMAGE):latest .
 
 run:
-	docker run --name $(CONTAINER) -d -p $(PORT):$(PORT) $(IMAGE):latest
+	docker run --name $(CONTAINER) -d -p $(PORT):$(PORT) $(IMAGE):latest || docker start $(CONTAINER)
 
 test: run
 	sleep 5
